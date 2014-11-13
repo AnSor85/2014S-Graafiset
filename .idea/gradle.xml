@@ -12,6 +12,10 @@
             <option value="$PROJECT_DIR$/v45_TouchDemo1" />
             <option value="$PROJECT_DIR$/v45_TouchDragDemo1" />
             <option value="$PROJECT_DIR$/v45_VelocityTracker" />
+            <option value="$PROJECT_DIR$/v46_AccelerometerSensor" />
+            <option value="$PROJECT_DIR$/v46_CompassSensor" />
+            <option value="$PROJECT_DIR$/v46_GravityDemo" />
+            <option value="$PROJECT_DIR$/v46_GyroSensor" />
           </set>
         </option>
       </GradleProjectSettings>
