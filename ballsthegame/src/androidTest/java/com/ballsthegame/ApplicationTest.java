@@ -1,4 +1,4 @@
-package tamk.graafiset.harjoitustyo;
+package com.ballsthegame;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
