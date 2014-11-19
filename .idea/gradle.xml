@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/_harjoitustyö" />
             <option value="$PROJECT_DIR$/v45_MultiTouchDemo1" />
             <option value="$PROJECT_DIR$/v45_TouchDemo1" />
             <option value="$PROJECT_DIR$/v45_TouchDragDemo1" />

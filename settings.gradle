@@ -1,4 +1,4 @@
-include ':v45_TouchDemo1'
+include ':v45_TouchDemo1', ':_harjoitustyö'
 include ':v45_VelocityTracker'
 include ':v45_TouchDragDemo1'
 include ':v45_MultiTouchDemo1'
