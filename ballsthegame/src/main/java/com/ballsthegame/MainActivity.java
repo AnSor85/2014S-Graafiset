@@ -3,7 +3,10 @@ package com.ballsthegame;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,41 +14,45 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 
+/**
+ * Created by Esa on 19.11.2014.
+ * MainActivity is used only to create fragments and to transfer data between them.
+ */
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements MainMenuFragment.ButtonListener{
+
+    Fragment mainMenuFragment = new MainMenuFragment();
+    Fragment gameFragment = new GameFragment();
+    FragmentManager fm = getFragmentManager();
+    FragmentTransaction ft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.w("BallsTheGame", "in MainActivity: onCreate()");
+
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new MainMenuFragment())
-                    .commit();
+
+            ft = fm.beginTransaction();
+            ft.add(R.id.container, mainMenuFragment);
+            ft.commit();
         }
     }
 
+    public void onStartNewGame(){
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+        Log.w("BallsTheGame", "in MainActivity: onStartNewGame()");
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if(!gameFragment.isAdded())
+        {
+            setContentView(R.layout.activity_main);
+            ft = fm.beginTransaction ();
+            ft.replace(R.id.container, gameFragment);
+            ft.addToBackStack(null);
+            ft.commit();
         }
 
-        return super.onOptionsItemSelected(item);
     }
 
 }
