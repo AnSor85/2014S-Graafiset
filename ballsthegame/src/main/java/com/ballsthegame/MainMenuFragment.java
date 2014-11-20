@@ -17,8 +17,10 @@ import android.util.Log;
 public class MainMenuFragment extends Fragment{
     private Button newGameButton;
 
+    // Create a callback interface for communicating with MainActivity
     ButtonListener mCallback;
     public interface ButtonListener{
+        // This interface method is used to start a new game
         public void onStartNewGame();
     }
 
@@ -42,14 +44,10 @@ public class MainMenuFragment extends Fragment{
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_mainmenu, container, false);
 
-
+        // Bind a Listener on the newGameButton
         newGameButton = (Button) rootView.findViewById(R.id.button_newgame);
-
-        // Solve this pls. Does not start the GameFragment as intended
-
         newGameButton.setOnClickListener(new OnClickListener(){
             public void onClick(View view){
-                Log.w("BallsTheGame", "in MainMenuFragment: newGameButton.setOnClickListener");
                 mCallback.onStartNewGame();
             }
         });

@@ -19,7 +19,7 @@ import android.os.Build;
  * MainActivity is used only to create fragments and to transfer data between them.
  */
 
-public class MainActivity extends Activity implements MainMenuFragment.ButtonListener{
+public class MainActivity extends Activity implements MainMenuFragment.ButtonListener {
 
     Fragment mainMenuFragment = new MainMenuFragment();
     Fragment gameFragment = new GameFragment();
@@ -34,24 +34,22 @@ public class MainActivity extends Activity implements MainMenuFragment.ButtonLis
 
         if (savedInstanceState == null) {
 
+            // Start the mainMenuFragment
             ft = fm.beginTransaction();
             ft.add(R.id.container, mainMenuFragment);
             ft.commit();
         }
     }
 
-    public void onStartNewGame(){
-
-        Log.w("BallsTheGame", "in MainActivity: onStartNewGame()");
-
-        if(!gameFragment.isAdded())
-        {
-            setContentView(R.layout.activity_main);
-            ft = fm.beginTransaction ();
-            ft.replace(R.id.container, gameFragment);
-            ft.addToBackStack(null);
-            ft.commit();
-        }
+    // Define interface methods here
+    public void onStartNewGame() {
+        // Set view to activity_main so that fragment knows where to inflate its own
+        setContentView(R.layout.activity_main);
+        // Replace the currently active fragment with gameFragment
+        ft = fm.beginTransaction();
+        ft.replace(R.id.container, gameFragment);
+        ft.addToBackStack(null);
+        ft.commit();
 
     }
 
